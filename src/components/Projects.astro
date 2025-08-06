@@ -3,11 +3,19 @@ import Section from "./Section.astro";
 import { Image } from "astro:assets";
 import type { ProjectProps } from "@types";
 
-interface Props {
-  projects: ProjectProps[];
-}
-
-const { projects } = Astro.props;
+// ==== PROJECT DATA START ====
+const projects: ProjectProps[] = [
+  {
+    name: "StuCo",
+    summary:
+      "An iOS app that helps students manage grades, assignments, and schedules using natural language input and AI-powered entity recognition. Features Google Calendar sync for reminders and academic event tracking.",
+    linkPreview: "/", // Replace with your live preview link, or keep as "/"
+    linkSource: "https://github.com/VishalT25/StuCo", // Replace with your repo if needed
+    image: "/StuCo-icon.png", // Ensure this exists in your /public folder
+  },
+  // Add more projects here as needed, following the same structure
+];
+// ==== PROJECT DATA END ====
 ---
 
 <Section text="Featured Projects" href="projects">
@@ -44,7 +52,7 @@ const { projects } = Astro.props;
             </div>
             <div class="flex items-end justify-end overflow-hidden">
               <Image
-                class="h-full w-[95%] rounded-ss-xl rounded-ee-2xl object-none object-left-top sm:h-[85%] sm:w-full"
+                class="h-full w-[95%] rounded-ss-xl rounded-ee-2xl object-cover sm:h-[85%] sm:w-full"
                 src={image}
                 alt={name}
                 width="736"
