@@ -16,7 +16,7 @@ This website serves as a central place for my resume, projects, and contact info
 
 ## 📷 Screenshot
 
-![Portfolio Screenshot](screenshot.png)
+![Portfolio Screenshot](screenshot.png) WIP
 
 ## 📫 Contact
 
