@@ -1,35 +1,27 @@
-# AstroZen - Personal Portfolio Website
+# Vishal Thamaraimanalan – Personal Portfolio
 
-AstroZen is a minimalist, accessible and responsive portfolio template for your personal portfolio website. It is built with Astro and TailwindCSS.
+Welcome to my personal portfolio website! This project showcases who I am, my work, and the technologies I use.
 
-![zen-og](https://github.com/user-attachments/assets/7a72aaae-6652-4cd0-becc-8e6a3c224993)
+## 🌟 About
 
-> [!NOTE]
-> The information contained in this template, including names, images, and content, is entirely fictitious and is intended solely to give the design a realistic appearance. Any coincidence with real-life people, events, or situations is purely coincidental. It is recommended that you replace this information with your own information.
+This website serves as a central place for my resume, projects, and contact information. It's built to highlight my skills and make connecting with me easy.
 
-## 🔥 Features
+- **Live Site:** https://vishal-t.vercel.app
 
-- [x] Minimalist design. clean and simple
-- [x] Mobile-first responsive layout
-- [x] SEO-friendly and accessible
-- [x] Easy to customize with a single configuration file
+## 🛠️ Tech Stack
 
-## ✅ Lighthouse Score
+- [Framework/Library]: (Next.js, React, HTML/CSS)
+- Deployment: Vercel
+- Source Control: GitHub
 
-![performance](https://github.com/user-attachments/assets/4f95e2ca-03f9-4996-9e34-dcd179194c58)
+## 📷 Screenshot
 
-## 🚀 Getting Started
+![Portfolio Screenshot](screenshot.png)
 
-Clone this repository to your local machine using Git.
+## 📫 Contact
 
-```scheme
-git clone https://github.com/immois/astro-zen.git
-cd astro-zen
-```
+Find me on [LinkedIn](https://www.linkedin.com/in/vishal-thamaraimanalan/) or reach out via [vthamara@uwo.ca](mailto:vthamara@uwo.ca).
 
-| Command        | Action                                       |
-| :------------- | :------------------------------------------- |
-| `pnpm install` | Installs dependencies                        |
-| `pnpm dev`     | Starts local dev server at `localhost:4321`  |
-| `pnpm build`   | Build your production site to `./dist/`      |
-| `pnpm preview` | Preview your build locally, before deploying |
+---
+
+Thank you for checking out my portfolio!
