@@ -1,0 +1,218 @@
+@import '@fontsource-variable/inter';
+@import '@fontsource/jetbrains-mono';
+
+/* ============================================
+   DESIGN SYSTEM — Vishal Thamaraimanalan
+   ============================================ */
+
+/* --- Fonts --- */
+
+/* Forma DJR — drop .woff2 files in static/fonts/FormaDJR/ */
+@font-face {
+	font-family: 'Forma DJR';
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/FormaDJR/FormaDJRText-Regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Forma DJR';
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/FormaDJR/FormaDJRText-Medium.woff2') format('woff2');
+}
+
+@font-face {
+	font-family: 'Forma DJR';
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+	src: url('/fonts/FormaDJR/FormaDJRText-Bold.woff2') format('woff2');
+}
+
+/* --- Variables --- */
+
+:root {
+	/* Monochromatic navy system — all hue 222° */
+	--bg: hsl(222, 47%, 7%);
+	--bg-2: hsl(222, 38%, 11%);
+	--bg-3: hsl(222, 28%, 18%);
+	--bg-4: hsl(222, 22%, 24%);
+
+	--txt-4: hsl(222, 12%, 30%);
+	--txt-3: hsl(222, 14%, 40%);
+	--txt-2: hsl(222, 18%, 58%);
+	--txt: hsl(222, 28%, 78%);
+	--txt-0: hsl(222, 40%, 92%);
+
+	/* Accent colors — saturated against dark canvas */
+	--blue: hsl(210, 85%, 58%);
+	--teal: hsl(175, 65%, 48%);
+	--purple: hsl(255, 70%, 68%);
+
+	/* Font stacks */
+	--font-body: 'Forma DJR', 'Inter Variable', 'Inter', -apple-system,
+		BlinkMacSystemFont, 'Segoe UI', sans-serif;
+	--font-mono: 'JetBrains Mono', 'SF Mono', 'Fira Code', monospace;
+
+	/* Motion */
+	--ease: cubic-bezier(0.4, 0, 0.2, 1);
+	--ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+	--duration: 0.2s;
+	--duration-slow: 0.4s;
+}
+
+/* --- Reset & Base --- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	scroll-behavior: smooth;
+	scrollbar-width: thin;
+	scrollbar-color: var(--bg-3) transparent;
+	scrollbar-gutter: stable;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body {
+	font-family: var(--font-body);
+	font-weight: 400;
+	font-size: 1rem;
+	line-height: 1.6;
+	color: var(--txt);
+	background: var(--bg);
+	min-height: 100vh;
+	overflow-x: hidden;
+}
+
+::selection {
+	background: hsla(210, 85%, 58%, 0.25);
+	color: var(--txt-0);
+}
+
+/* --- Typography --- */
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: var(--font-body);
+	font-weight: 500;
+	line-height: 1.2;
+	color: var(--txt-0);
+	letter-spacing: -0.02em;
+}
+
+h1 {
+	font-size: clamp(2.5rem, 6vw, 4.5rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+}
+
+h2 {
+	font-size: 1.75rem;
+	margin: 2.5rem 0 1rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin: 1.5rem 0 0.75rem;
+}
+
+h4 {
+	font-size: 1.0625rem;
+	margin: 1.25rem 0 0.5rem;
+}
+
+p {
+	font-size: 1.0625rem;
+	line-height: 1.75;
+	margin: 0.75rem 0;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+code {
+	font-family: var(--font-mono);
+	font-size: 0.875rem;
+	font-variant-ligatures: no-contextual;
+}
+
+hr {
+	border: none;
+	height: 1px;
+	background: var(--bg-3);
+	margin: 2rem 0;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+button {
+	font-family: inherit;
+	cursor: pointer;
+	border: none;
+	background: none;
+	color: inherit;
+}
+
+/* --- Utility --- */
+
+.mono {
+	font-family: var(--font-mono);
+	font-size: 0.8125rem;
+	letter-spacing: 0.02em;
+}
+
+.label {
+	font-family: var(--font-mono);
+	font-size: 0.75rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--txt-3);
+}
+
+/* --- Reduced Motion --- */
+
+@media (prefers-reduced-motion) {
+	*,
+	*::before,
+	*::after {
+		animation-delay: 0ms !important;
+		animation-duration: 0ms !important;
+		transition-duration: 0ms !important;
+	}
+}
+
+/* --- Responsive scaling --- */
+
+@media (max-width: 1000px) {
+	:root {
+		font-size: 93.75%;
+	}
+}
+
+@media (max-width: 600px) {
+	:root {
+		font-size: 87.5%;
+	}
+}
