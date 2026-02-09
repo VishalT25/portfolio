@@ -189,6 +189,7 @@
 
 	@media (max-width: 700px) {
 		.hero {
+			flex: none;
 			justify-content: flex-start;
 			padding: 2rem 1.5rem;
 			gap: 2.5rem;
