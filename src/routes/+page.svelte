@@ -27,9 +27,7 @@
 
 		<ScrollReveal delay={240}>
 			<p class="intro">
-				I build products that solve real problems, working at the
-				intersection of software engineering, AI, and product design.
-				Currently studying at Western University.
+				hey there! i'm vishal, and i'm interested in ai, ml, web dev, design, among other topics. i love making things that are both functional and beautiful.
 			</p>
 		</ScrollReveal>
 
