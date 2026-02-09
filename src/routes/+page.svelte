@@ -186,4 +186,20 @@
 			margin: 0.75rem 0 1rem;
 		}
 	}
+
+	@media (max-width: 700px) {
+		.hero {
+			justify-content: flex-start;
+			padding: 2rem 1.5rem;
+			gap: 2.5rem;
+		}
+
+		.hero-content {
+			max-width: 100%;
+		}
+
+		.intro {
+			font-size: 0.9375rem;
+		}
+	}
 </style>

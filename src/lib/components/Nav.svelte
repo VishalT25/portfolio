@@ -23,7 +23,7 @@
 
 <svelte:window onscroll={() => { scrolled = window.scrollY > 20; }} />
 
-<header class:home={page.url.pathname === '/'} class:scrolled>
+<header class:home={page.url.pathname === '/'} class:scrolled class:mobile-open={mobileOpen}>
 	<nav>
 		<a href="/" class="logo" aria-label="Home">
 			<img
@@ -91,6 +91,11 @@
 		background: hsla(222, 47%, 7%, 0.55);
 		-webkit-backdrop-filter: blur(16px) saturate(1.4);
 		backdrop-filter: blur(16px) saturate(1.4);
+		border-bottom-color: hsla(222, 28%, 18%, 0.5);
+	}
+
+	header.mobile-open {
+		background: hsl(222, 47%, 7%);
 		border-bottom-color: hsla(222, 28%, 18%, 0.5);
 	}
 
