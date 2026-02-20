@@ -187,9 +187,9 @@
 
 	@media (max-width: 700px) {
 		.hero {
-			flex: 1;
-			justify-content: center;
-			padding: clamp(1.5rem, 6dvh, 4rem) 1.5rem;
+			flex: none;
+			justify-content: flex-start;
+			padding: clamp(2.5rem, 8dvh, 5rem) 1.5rem;
 			gap: 2rem;
 		}
 
