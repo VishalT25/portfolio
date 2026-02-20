@@ -139,7 +139,7 @@
 		font-size: 1.125rem;
 		color: var(--txt-0);
 		margin-top: 0.5rem;
-		display: inline-block;
+		display: block;
 		text-decoration: underline transparent 1px;
 		text-underline-offset: 3px;
 		transition: text-decoration-color 0.2s var(--ease);
