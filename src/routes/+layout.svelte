@@ -58,11 +58,11 @@
 
 	@media (max-width: 700px) {
 		.page-container {
-			min-height: auto;
+			min-height: 100dvh;
 		}
 
 		.page-transition {
-			min-height: auto;
+			min-height: calc(100dvh - 4.5rem);
 		}
 	}
 </style>

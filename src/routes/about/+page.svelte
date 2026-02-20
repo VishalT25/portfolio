@@ -320,7 +320,7 @@
 
 	@media (max-width: 700px) {
 		.about {
-			padding: 2rem 1.5rem 4rem;
+			padding: clamp(1.5rem, 5dvh, 3rem) 1.5rem;
 		}
 
 		.edu {
