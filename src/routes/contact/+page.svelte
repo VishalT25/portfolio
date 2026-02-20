@@ -27,12 +27,21 @@
 			<div class="contact-row">
 				<span class="label">email</span>
 				<div class="contact-value">
+					<button class="copy-btn" class:copied={emailCopied} onclick={copyEmail} aria-label="Copy email to clipboard">
+						{#if emailCopied}
+							<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<path d="M20 6 9 17l-5-5"/>
+							</svg>
+						{:else}
+							<svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+								<rect x="9" y="2" width="6" height="4" rx="1"/>
+								<path d="M9 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-2"/>
+							</svg>
+						{/if}
+					</button>
 					<a href="mailto:vthamara@uwo.ca" class="contact-link">
 						vthamara@uwo.ca
 					</a>
-					<button class="copy-btn" onclick={copyEmail}>
-						{emailCopied ? 'copied' : 'copy'}
-					</button>
 				</div>
 			</div>
 		</ScrollReveal>
@@ -122,7 +131,7 @@
 	.contact-value {
 		display: flex;
 		align-items: center;
-		gap: 1rem;
+		gap: 0.5rem;
 		margin-top: 0.5rem;
 	}
 
@@ -158,18 +167,34 @@
 	/* --- Copy button --- */
 
 	.copy-btn {
-		font-family: var(--font-mono);
-		font-size: 0.6875rem;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		flex-shrink: 0;
+		width: 0;
+		height: 1.25rem;
+		opacity: 0;
+		overflow: hidden;
 		color: var(--txt-3);
-		padding: 0.25rem 0.625rem;
-		border: 1px solid var(--bg-3);
-		border-radius: 3px;
-		transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+		background: none;
+		border: none;
+		padding: 0;
+		cursor: pointer;
+		transition: width 0.25s var(--ease), opacity 0.25s var(--ease), color 0.2s var(--ease);
+	}
+
+	.contact-value:hover .copy-btn,
+	.copy-btn.copied {
+		width: 1.25rem;
+		opacity: 1;
 	}
 
 	.copy-btn:hover {
 		color: var(--txt-0);
-		border-color: var(--txt-3);
+	}
+
+	.copy-btn.copied {
+		color: #4ade80;
 	}
 
 	@media (max-width: 700px) {
