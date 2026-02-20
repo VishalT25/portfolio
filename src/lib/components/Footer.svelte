@@ -131,9 +131,15 @@
 		color: #4ade80;
 	}
 
+	@media (max-width: 700px) {
+		footer {
+			padding-bottom: 5.5rem;
+		}
+	}
+
 	@media (max-width: 600px) {
 		footer {
-			padding: 2rem 1.5rem;
+			padding: 2rem 1.5rem 5.5rem;
 		}
 
 		.inner {

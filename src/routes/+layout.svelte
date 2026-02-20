@@ -55,4 +55,14 @@
 		flex-direction: column;
 		min-height: calc(100vh - 4.5rem);
 	}
+
+	@media (max-width: 700px) {
+		.page-container {
+			min-height: auto;
+		}
+
+		.page-transition {
+			min-height: auto;
+		}
+	}
 </style>

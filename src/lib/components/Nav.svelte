@@ -1,5 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/state';
+	import { fly } from 'svelte/transition';
+	import { cubicOut } from 'svelte/easing';
 
 	const links = [
 		{ href: '/', label: 'home' },
@@ -23,7 +25,7 @@
 
 <svelte:window onscroll={() => { scrolled = window.scrollY > 20; }} />
 
-<header class:home={page.url.pathname === '/'} class:scrolled class:mobile-open={mobileOpen}>
+<header class:home={page.url.pathname === '/'} class:scrolled>
 	<nav>
 		<a href="/" class="logo" aria-label="Home">
 			<img
@@ -46,33 +48,40 @@
 				</a>
 			{/each}
 		</div>
-
-		<button
-			class="mobile-toggle"
-			onclick={() => (mobileOpen = !mobileOpen)}
-			aria-label="Toggle navigation"
-			aria-expanded={mobileOpen}
-		>
-			<span class="bar" class:open={mobileOpen}></span>
-			<span class="bar" class:open={mobileOpen}></span>
-		</button>
 	</nav>
+</header>
 
+<!-- Floating nav — mobile only -->
+{#if mobileOpen}
+	<div class="fab-backdrop" onclick={closeMobile} aria-hidden="true"></div>
+{/if}
+
+<div class="fab-container">
 	{#if mobileOpen}
-		<div class="mobile-nav">
+		<nav class="fab-menu" transition:fly={{ y: 8, duration: 160, easing: cubicOut }}>
 			{#each links as link}
 				<a
 					href={link.href}
-					class="mobile-link"
+					class="fab-link"
 					class:active={isActive(link.href)}
 					onclick={closeMobile}
 				>
 					{link.label}
 				</a>
 			{/each}
-		</div>
+		</nav>
 	{/if}
-</header>
+
+	<button
+		class="fab-btn"
+		onclick={() => (mobileOpen = !mobileOpen)}
+		aria-label="Toggle navigation"
+		aria-expanded={mobileOpen}
+	>
+		<span class="bar" class:open={mobileOpen}></span>
+		<span class="bar" class:open={mobileOpen}></span>
+	</button>
+</div>
 
 <style>
 	header {
@@ -91,11 +100,6 @@
 		background: hsla(222, 47%, 7%, 0.55);
 		-webkit-backdrop-filter: blur(16px) saturate(1.4);
 		backdrop-filter: blur(16px) saturate(1.4);
-		border-bottom-color: hsla(222, 28%, 18%, 0.5);
-	}
-
-	header.mobile-open {
-		background: hsl(222, 47%, 7%);
 		border-bottom-color: hsla(222, 28%, 18%, 0.5);
 	}
 
@@ -187,18 +191,51 @@
 		background: var(--blue);
 	}
 
-	/* --- Mobile --- */
+	/* --- FAB (mobile only) --- */
 
-	.mobile-toggle {
+	.fab-backdrop {
 		display: none;
+		position: fixed;
+		inset: 0;
+		z-index: 199;
+	}
+
+	.fab-container {
+		display: none;
+		position: fixed;
+		bottom: 1.5rem;
+		right: 1.5rem;
+		z-index: 200;
 		flex-direction: column;
-		gap: 6px;
-		padding: 4px;
+		align-items: flex-end;
+		gap: 0.625rem;
+	}
+
+	.fab-btn {
+		width: 3rem;
+		height: 3rem;
+		border-radius: 50%;
+		background: hsl(222, 47%, 11%);
+		border: 1px solid var(--bg-3);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		gap: 5px;
+		box-shadow: 0 4px 24px rgba(0, 0, 0, 0.5);
+		cursor: pointer;
+		flex-shrink: 0;
+		transition: background 0.2s var(--ease), box-shadow 0.2s var(--ease);
+	}
+
+	.fab-btn:hover {
+		background: hsl(222, 47%, 16%);
+		box-shadow: 0 6px 28px rgba(0, 0, 0, 0.6);
 	}
 
 	.bar {
 		display: block;
-		width: 24px;
+		width: 18px;
 		height: 2px;
 		background: var(--txt-0);
 		border-radius: 2px;
@@ -206,33 +243,34 @@
 	}
 
 	.bar.open:first-child {
-		transform: translateY(4px) rotate(45deg);
+		transform: translateY(3.5px) rotate(45deg);
 	}
 
 	.bar.open:last-child {
-		transform: translateY(-4px) rotate(-45deg);
+		transform: translateY(-3.5px) rotate(-45deg);
 	}
 
-	.mobile-nav {
-		display: none;
-		flex-direction: column;
-		gap: 0.5rem;
-		padding: 1rem 0 1.5rem;
-		border-top: 1px solid var(--bg-3);
-		max-width: 64rem;
-		margin: 0 auto;
+	.fab-menu {
+		background: hsl(222, 47%, 9%);
+		border: 1px solid var(--bg-3);
+		border-radius: 12px;
+		padding: 0.375rem 0;
+		box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+		min-width: 7.5rem;
 	}
 
-	.mobile-link {
+	.fab-link {
+		display: block;
 		font-family: var(--font-mono);
 		font-size: 0.875rem;
 		color: var(--txt-2);
-		padding: 0.5rem 0;
+		padding: 0.625rem 1.25rem;
+		text-align: right;
 		transition: color 0.2s var(--ease);
 	}
 
-	.mobile-link:hover,
-	.mobile-link.active {
+	.fab-link:hover,
+	.fab-link.active {
 		color: var(--txt-0);
 	}
 
@@ -241,19 +279,12 @@
 			padding: 0 1.5rem;
 		}
 
-		header.home {
-			transform: none;
-		}
-
 		.links {
 			display: none;
 		}
 
-		.mobile-toggle {
-			display: flex;
-		}
-
-		.mobile-nav {
+		.fab-backdrop,
+		.fab-container {
 			display: flex;
 		}
 	}
